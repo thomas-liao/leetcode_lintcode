@@ -1,4 +1,4 @@
-# failed case: "ab" - >"aa"
+# failed case: "ab" - >"aa", fixed by adding if len(set(mapping.keys())) != .....
 # class Solution:
 #     def isIsomorphic(self, s: str, t: str) -> bool:
 #         if not s and not t:
