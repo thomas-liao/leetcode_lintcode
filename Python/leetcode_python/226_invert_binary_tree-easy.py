@@ -45,3 +45,14 @@ class Solution(object):
                 stack.append(node.left)
                 stack.append(node.right)
         return root
+
+# practice again
+class Solution:
+    def invertTree(self, root: TreeNode) -> TreeNode:
+        if not root:
+            return root
+        l = self.invertTree(root.left)
+        r = self.invertTree(root.right)
+        # l, r = r, l# error it doesn't change anything?
+        root.left, root.right = r, l
+        return root
