@@ -1,0 +1,27 @@
+# my solution
+# idea: map () to score 1, -1
+# iterate through score and keep adding score into cur_score (an integer), counter to count min #parenthesis needed
+# and whenever cur_score < 0, we add one to counter (s.t. cur_score at any idx will be >= 0, it has to #be otherwise the parenthesis are not valid)
+# and finally we do counter += cur_score, finish
+
+# then
+class Solution:
+    def minAddToMakeValid(self, S: str) -> int:
+        # define score: (: +1, ): -1
+        
+        if not S or len(S) < 2:
+            return len(S)
+        
+        scores = list(map(lambda x: -1 if x ==')' else 1, S))
+        
+        counter = 0
+        cur_score = 0
+        for i in range(len(scores)):
+            cur_score += scores[i]
+            if cur_score < 0:
+                counter += 1
+                cur_score += 1
+        # cur_score will always be >= 0
+        counter += cur_score
+        
+        return counter
